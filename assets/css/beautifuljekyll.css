@@ -1,3 +1,4 @@
+
 ---
 layout: null
 ---
@@ -21,7 +22,7 @@ layout: null
   /* common CSS variables */
   --body-font: 'Lora', 'Times New Roman', serif;
   --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --mid-col: #808080;
+  --mid-col: #7b3131;
 }
 
 /* --- General --- */
@@ -58,7 +59,7 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1.1;
 }
 h1 {
-  font-size: 2.0rem;
+  font-size: 2.25rem;
 }
 h2 {
   font-size: 1.875rem;
