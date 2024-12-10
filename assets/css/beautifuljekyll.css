@@ -7,12 +7,12 @@ layout: null
 
 :root {
   /* config file CSS variables */
-  --page-col: {{ site.page-col | default: "#FFFFFF" }};
+  --page-col: {{ site.page-col | default: "#cf92d1" }};
   --text-col: {{ site.text-col | default: "#404040" }};
   --link-col: {{ site.link-col | default: "#008AFF" }};
   --hover-col: {{ site.hover-col | default: "#0085A1" }};
   --navbar-col: {{ site.navbar-col | default: "#EAEAEA" }};
-  --navbar-text-col: {{ site.navbar-text-col | default: "#404040" }};
+  --navbar-text-col: {{ site.navbar-text-col | default: "#CD853F" }};
   --navbar-border-col: {{ site.navbar-border-col | default: "#DDDDDD" }};
   --footer-col: {{ site.footer-col | default: "#EAEAEA" }};
   --footer-text-col: {{ site.footer-text-col | default: "#777777" }};
@@ -22,7 +22,7 @@ layout: null
   /* common CSS variables */
   --body-font: 'Lora', 'Times New Roman', serif;
   --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --mid-col: #808080;
+  --mid-col: #cf92d1;
 }
 
 /* --- General --- */
@@ -30,6 +30,7 @@ layout: null
 html {
   font-size: 100%
 }
+
 
 body {
   font-family: var(--body-font);
@@ -46,16 +47,20 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
 body > main {
   flex: 1;
 }
+
+
 p {
   line-height: 1.5;
   margin: 1.875rem 0;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--header-font);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.1;
 }
 h1 {
@@ -405,6 +410,34 @@ img {
   }
 }
 
+/* Add this CSS to style your nav */
+nav {
+  position: fixed; /* Keeps it fixed when scrolling */
+  right: 0;
+  top: 100px; /* Adjust this value to move it down or up */
+  background-color: var(--navbar-col); /* Background color */
+  padding: 10px; /* Adjust padding as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+  border-left: 1px solid var(--navbar-border-col); /* Optional: border */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-bottom: 10px; /* Space between items */
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--navbar-text-col);
+  font-size: 1rem; /* Adjust font size */
+}
+
+
 /* --- Footer --- */
 
 footer {
@@ -473,7 +506,16 @@ footer .footer-custom-content {
     font-size: 1rem;
   }
 }
+.center-content {
+  text-align: center;
+}
 
+.center-content img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem; /* Optional: Adds space between the text and image */
+}
 /* --- Post preview (feed) --- */
 
 .posts-list {
@@ -1123,4 +1165,12 @@ pre {
   #nav-search-text {
     display: inline-block;
   }
+}
+
+section#introduction {
+  width: 100%; /* Make the section occupy the full container */
+  max-width: 90%; /* Limit the maximum width for readability */
+  margin: 0 auto; /* Center the section horizontally */
+  text-align: left; /* Keep text aligned to the left (default) */
+  padding: 0 1rem; /* Add side spacing */
 }

@@ -1,0 +1,80 @@
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url('/assets/img/360_F_310004733_dxjpd9aniybFQMdweHFdljMhwJ6nfys9.jpg') no-repeat center center;*/
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.5); /* White overlay with 50% opacity */
+    mix-blend-mode: lighten; /* Optional: blend the overlay with the image */
+    z-index: -1;
+    pointer-events: none; /* Ensure the background doesn’t block interactions */
+  }
+
+/* This is added to modify the inital margins defined by the beautiful jekyll theme. container-md is identified through inspection of the site */
+.home-container {
+  width: 100%;           /* Takes up 100% of the available width */
+  max-width: 4000px;     /* Maximum width, so it doesn’t grow too wide */
+  margin: 0 auto;        /* Centers the container horizontally */
+  padding: 0 15px;       /* Small padding inside (optional) */
+  text-align: center;    /* Center the text inside the container */
+}
+
+/* Another container with the same settings */
+.container-md {
+  width: 100%;           /* Takes up 100% of the available width */
+  max-width: 40000px;     /* Maximum width */
+  margin: 0 auto;        /* Centers the container horizontally */
+  padding: 0 15px;       /* Small padding inside (optional) */
+  text-align: center;    /* Center the text inside the container */
+}
+
+/* _sass/custom.css.scss */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.scroll-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.centered-video {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
