@@ -1,3 +1,4 @@
+
 body::before {
     content: "";
     position: fixed;
@@ -7,10 +8,11 @@ body::before {
     height: 100%;
     /* background: url('/assets/img/360_F_310004733_dxjpd9aniybFQMdweHFdljMhwJ6nfys9.jpg') no-repeat center center;*/
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.5); /* White overlay with 50% opacity */
+    background-color: rgba(255, 255, 255, 0.01); /* White overlay with 50% opacity */
     mix-blend-mode: lighten; /* Optional: blend the overlay with the image */
     z-index: -1;
     pointer-events: none; /* Ensure the background doesn’t block interactions */
+    color: var(--text-col);
   }
 
 /* This is added to modify the inital margins defined by the beautiful jekyll theme. container-md is identified through inspection of the site */
@@ -78,3 +80,15 @@ html {
   margin: 0 auto;
   padding: 20px;
 }
+
+/*
+.right-nav {
+  position: fixed;
+  right: 0;
+  top: 20px;
+  background-color: var(--navbar-col);
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid var(--navbar-border-col);
+}*/
+
