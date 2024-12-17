@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       recommendationDisplay.textContent = `Recommended movie: ${recommendedMovie}`;
       recommendationDisplay.style.color = 'green';
     } else {
-      recommendationDisplay.textContent = 'No recommendation found for this movie.';
+      recommendationDisplay.textContent = 'This movie is not in our database. Please try another one.';
       recommendationDisplay.style.color = 'red';
     }
   }

@@ -75,112 +75,82 @@ subtitle: You will never have to worry about what movie to watch...
       <p style="text-align: justify;">To discover the underlying topics of the movies with LDA we will need the synopses. We decide not to use the movie summaries since they encode significantly 
         less context and would result in less confident clustering. The synopses can be found in the MPST dataset.</p>
 
-        <div class="center-content">
-          <iframe
-            src="/assets/plots/ratings_dropdown.html" alt="WordCloud" 
-            style="width: 130%; height: 800px; margin-bottom: 20px; transform: scale(0.8) translate(-12.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
-          </iframe>
-        </div>
-      
       <p style="text-align: justify;">In addition to synopses, we also need movie ratings for our analysis. We will explore whether movies with similar themes tend to have
         similar ratings and examine if ratings are essential for our recommendation system. Ratings provide valuable insights in the context 
         of recommendations, as they directly indicate how much viewers enjoyed a movie. To gather this data, we found an IMDb dataset online that includes movie ratings.</p>
+
+        <!-- Ratings plot -->
+        <div class="center-content">
+          <iframe
+            src="/assets/plots/ratings_dropdown.html" alt="WordCloud" 
+            style="width: 130%; height: 800px; margin-bottom: 20px; transform: scale(0.8) translate(-15.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
+          </iframe>
+        </div>
       
-      <!--img src="/assets/images/eda-plot.png" alt="Exploratory Data Analysis Plot"-->
     </section>
 
-    <!-- Results Section -->
+    <!-- LDA Section -->
     <section id="lda">
       <h1>Latent Dirichlet Analysis</h1>
-      <p>This section showcases the results of the data analysis, including key findings and visualizations.</p>
+      <p>This section showcases the results of the LDA, including key findings and visualizations.</p>
 
-      <!--
-      <div style="position: relative; width: 120%; padding-top: 70%; filter: invert(1) hue-rotate(180deg); background-color: black;">
-        <iframe 
-            src="/assets/plots/lda_visualisation.html"
-            style="position: absolute; top: 0; left: -100px; width: 120%; height: 120%; border: none; transform: scale(1); transform-origin: top-left;">
+      <!-- plot LDA-->  
+      <div class="center-content">
+        <iframe
+          src="/assets/plots/lda_visualisation.html" alt="LDA_visualization" 
+          style="width: 130%; height: 790px; margin-bottom: 20px; transform: scale(0.8) translate(-15.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
         </iframe>
-    </div>
-      
-      -->
-      
-    
-    
-    <div class="center-content">
-      <iframe
-        src="/assets/plots/lda_visualisation.html" alt="LDA_visualization" 
-        style="width: 130%; height: 800px; margin-bottom: 20px; transform: scale(0.8) translate(-12.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
-      </iframe>
-    </div>
-    
-    
-      
-    </section>
-
-    <script src="{{ '/assets/js/recommendation.js' | relative_url }}"></script>
-    <section id="movie-recommendation">
-      <h2>Find Your Next Movie</h2>
-      <form id="recommendation-form">
-        <label for="movie-name">Enter a movie name:</label>
-        <input type="text" id="movie-name" name="movie_name" required>
-        <button type="submit">Get Recommendation</button>
-      </form>
-      <div id="recommendation-result" style="margin-top: 20px;">
-        <p id="result-text"></p>
       </div>
     </section>
 
+<!--
+  
+<script src="/assets/js/script.js"></script>
+<section id="movie-recommendation">
+  <h2>Find Your Next Movie</h2>
+  <form id="recommendation-form">
+    <label for="movie-input">Enter a movie name:</label>
+    <input type="text" id="movie-input" name="movie_name" required>
+    <button type="button" id="recommend-button">Get Recommendation</button>
+  </form>
+  <div id="recommendation-result" style="margin-top: 20px;">
+    <p id="recommendation-display"></p>
+  </div>
+</section>
+
+-->
     
 <!-- Movie Recommendation Section -->
+  </section>
+
 <script src="/assets/js/script.js"></script>
-<div class="movie-recommendation-container">
+<section id="movie-recommendation">
   <h2>Movie Recommendation</h2>
-  <div class="recommendation-input">
-    <input 
-      type="text" 
-      id="movie-input" 
-      placeholder="Enter a movie name"
-    >
-    <button id="recommend-button">Get Recommendation</button>
+  <div class="movie-recommendation-container">
+    <div class="recommendation-input">
+      <input 
+        type="text" 
+        id="movie-input" 
+        placeholder="Enter a movie name"
+      >
+      <button id="recommend-button">Get Recommendation</button>
+    </div>
+    <div 
+      id="recommendation-display" 
+      class="recommendation-result"
+    ></div>
   </div>
-  <div 
-    id="recommendation-display" 
-    class="recommendation-result"
-  ></div>
-</div>
-
-
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Movie Genre WordCloud and Plot</title>
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  </head>
-  <body>
-      <h1>Movie Genre Counts and WordCloud</h1>
-  
-      <h2>Genre Distribution</h2>
-      <div id="plot-container">
-          <!-- The Plotly graph will be inserted here by Flask -->
-          {{ plot|safe }}
-      </div>
-  
-      <h2>WordCloud for Movie Synopses</h2>
-      <div id="wordcloud-container">
-          <!-- Display the word cloud image -->
-          <img src="data:image/png;base64,{{ wordcloud_img }}" alt="WordCloud for Selected Genre" />
-      </div>
-  </body>
+</section>
 
 
   
 
-    <!-- Conclusion Section -->
-    <section id="conclusion">
-      <h1>Conclusion</h1>
-      <p>The conclusion wraps up the project, summarizing the key takeaways and potential next steps.</p>
-    </section>
-  </main>
+  <!-- Conclusion Section -->
+  <section id="conclusion">
+    <h1>Conclusion</h1>
+    <p>The conclusion wraps up the project, summarizing the key takeaways and potential next steps.</p>
+  </section>
 
+</main>
 </body>
 </html>
