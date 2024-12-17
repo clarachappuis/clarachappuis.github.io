@@ -92,3 +92,61 @@ html {
   border-left: 1px solid var(--navbar-border-col);
 }*/
 
+#recommendation-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+#recommendation-form input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#recommendation-form button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Movie Recommendation Styles */
+.movie-recommendation-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.recommendation-input {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#movie-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+}
+
+#recommend-button {
+  padding: 10px 15px;
+  background-color: #ff0000;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#recommend-button:hover {
+  background-color: #0056b3;
+}
+
+#recommendation-display {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}

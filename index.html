@@ -24,7 +24,7 @@ subtitle: You will never have to worry about what movie to watch...
     <ul>
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#data-exploration">Data Exploration</a></li>
-      <li><a href="#results">Results</a></li>
+      <li><a href="#lda">Latent Dirichlet Analysis</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
     </ul>
   </nav>
@@ -38,30 +38,142 @@ subtitle: You will never have to worry about what movie to watch...
       </video>
   </div>
 
-  
+
     <!-- Introduction Section -->
     <section id="introduction">
       <h1>Introduction</h1>
-      <p>Just finished an amazing movie and unsure what to watch next? Don’t worry we’ve got you covered! Every movie you watch has a unique signature, a blend of themes and ideas beyond simple genres. What if the key to finding your next favorite film is not in the usual categories like "action" or "romance," but in uncovering deeper, hidden topics that truly reflect the movie?
+      <p style="text-align: justify;">Just finished an amazing movie and unsure what to watch next? Don’t worry we’ve got you covered! Every movie you watch has a unique signature, a blend of themes and ideas beyond simple genres. What if the key to finding your next favorite film is not in the usual categories like "action" or "romance," but in uncovering deeper, hidden topics that truly reflect the movie?
         In this analysis, we dive into the art of movie recommendation. Using Latent Dirichlet Allocation (LDA), a tool for discovering hidden topics in movies’ plots, we go beyond surface-level genres to identify the intricate themes that define each film. These topics form the foundation of a content-based recommendation system, helping us find movies with similar thematics. 
         </p>
-        <div class="center-content">
+        <!-- <div class="center-content">
           <img src="/assets/img/movie_recommendation.jpg" alt="Movies recommendation">
-        </div>
+        </div> -->
     </section>
 
     <!-- Data Exploration Section -->
     <section id="data-exploration">
       <h1>Data Exploration</h1>
-      <p>Here, I will present some exploratory data analysis, including figures and insights from the dataset.</p>
+      
+      <p style="text-align: justify;">Before diving into the core part of the project, let's take a closer look at the datasets we're working with. 
+        In this section, we will analyze the data sources, highlighting the key information that will be critical for our analysis. 
+        This will help us better understand the structure of the datasets and identify the relevant features that we need to focus on in order to draw meaningful conclusions.</p>
+        
+      <h2> The Genres That Steal the Spotlight in the Movie Industry</h2>
+      <p style="text-align: justify;"> 
+      Let’s roll the reel and uncover which genres are the true stars of the show and maybe stumble upon a few hidden gems along the way! <br>
+  
+      First, by analyzing the CMU Movie dataset, we see that we have 133 different genres in the database. Let's find the most recurrent ones:</p>
+      
+      <div class="center-content">
+        <img src="/assets/img/genres.png" alt="Distribution of genres" style="width: 70%; height: auto; margin-bottom: 20px;">
+      </div>
+      
+      <p style="text-align: justify;">Drama takes the lead as the most popular genre (what can we say, people love a bit of drama!). 
+        Following closely are thriller, comedy, action, and romance, rounding out the top five. This shows that people enjoy excitement and real-life stories. 
+        On the other end, niche genres like 'Cult' and 'Political drama' are much less common, which isn't surprising given their more specific audience.</p>
+      
+      <p style="text-align: justify;">To discover the underlying topics of the movies with LDA we will need the synopses. We decide not to use the movie summaries since they encode significantly 
+        less context and would result in less confident clustering. The synopses can be found in the MPST dataset.</p>
+
+        <div class="center-content">
+          <iframe
+            src="/assets/plots/ratings_dropdown.html" alt="WordCloud" 
+            style="width: 130%; height: 800px; margin-bottom: 20px; transform: scale(0.8) translate(-12.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
+          </iframe>
+        </div>
+      
+      <p style="text-align: justify;">In addition to synopses, we also need movie ratings for our analysis. We will explore whether movies with similar themes tend to have
+        similar ratings and examine if ratings are essential for our recommendation system. Ratings provide valuable insights in the context 
+        of recommendations, as they directly indicate how much viewers enjoyed a movie. To gather this data, we found an IMDb dataset online that includes movie ratings.</p>
+      
       <!--img src="/assets/images/eda-plot.png" alt="Exploratory Data Analysis Plot"-->
     </section>
 
     <!-- Results Section -->
-    <section id="results">
-      <h1>Results</h1>
+    <section id="lda">
+      <h1>Latent Dirichlet Analysis</h1>
       <p>This section showcases the results of the data analysis, including key findings and visualizations.</p>
+
+      <!--
+      <div style="position: relative; width: 120%; padding-top: 70%; filter: invert(1) hue-rotate(180deg); background-color: black;">
+        <iframe 
+            src="/assets/plots/lda_visualisation.html"
+            style="position: absolute; top: 0; left: -100px; width: 120%; height: 120%; border: none; transform: scale(1); transform-origin: top-left;">
+        </iframe>
+    </div>
+      
+      -->
+      
+    
+    
+    <div class="center-content">
+      <iframe
+        src="/assets/plots/lda_visualisation.html" alt="LDA_visualization" 
+        style="width: 130%; height: 800px; margin-bottom: 20px; transform: scale(0.8) translate(-12.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
+      </iframe>
+    </div>
+    
+    
+      
     </section>
+
+    <script src="{{ '/assets/js/recommendation.js' | relative_url }}"></script>
+    <section id="movie-recommendation">
+      <h2>Find Your Next Movie</h2>
+      <form id="recommendation-form">
+        <label for="movie-name">Enter a movie name:</label>
+        <input type="text" id="movie-name" name="movie_name" required>
+        <button type="submit">Get Recommendation</button>
+      </form>
+      <div id="recommendation-result" style="margin-top: 20px;">
+        <p id="result-text"></p>
+      </div>
+    </section>
+
+    
+<!-- Movie Recommendation Section -->
+<script src="/assets/js/script.js"></script>
+<div class="movie-recommendation-container">
+  <h2>Movie Recommendation</h2>
+  <div class="recommendation-input">
+    <input 
+      type="text" 
+      id="movie-input" 
+      placeholder="Enter a movie name"
+    >
+    <button id="recommend-button">Get Recommendation</button>
+  </div>
+  <div 
+    id="recommendation-display" 
+    class="recommendation-result"
+  ></div>
+</div>
+
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Movie Genre WordCloud and Plot</title>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+      <h1>Movie Genre Counts and WordCloud</h1>
+  
+      <h2>Genre Distribution</h2>
+      <div id="plot-container">
+          <!-- The Plotly graph will be inserted here by Flask -->
+          {{ plot|safe }}
+      </div>
+  
+      <h2>WordCloud for Movie Synopses</h2>
+      <div id="wordcloud-container">
+          <!-- Display the word cloud image -->
+          <img src="data:image/png;base64,{{ wordcloud_img }}" alt="WordCloud for Selected Genre" />
+      </div>
+  </body>
+
+
+  
 
     <!-- Conclusion Section -->
     <section id="conclusion">

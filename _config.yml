@@ -33,7 +33,7 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar-icon.png"
+#avatar: "/assets/img/avatar-icon.png"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
@@ -136,7 +136,7 @@ full-width: true
 text-col: "#FFFFFF"
 link-col: "#008AFF"
 hover-col: "#F07857"
-navbar-col: "#010015"
+navbar-col: "#000000"
 navbar-text-col: "#FFFFFF"
 navbar-border-col: "#DDDDDD"
 footer-col: "#EAEAEA"
@@ -149,7 +149,7 @@ footer-hover-col: "#0085A1"
 
 #navbar-img: "/assets/img/404-southpark.png"
 #footer-img: "/assets/img/bgimage.png"
-#page-img: "/assets/img/404-southpark.png"
+page-img: "/assets/img/background.jpg"
 site-css:
   - "/assets/css/custom_styles.css"
 
