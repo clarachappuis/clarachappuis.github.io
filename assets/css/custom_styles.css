@@ -133,7 +133,7 @@ html {
 
 #recommend-button {
   padding: 10px 15px;
-  background-color: #ff0000;
+  background-color: #fd97db;
   color: rgb(0, 0, 0);
   border: none;
   border-radius: 0 4px 4px 0;
@@ -142,11 +142,19 @@ html {
 }
 
 #recommend-button:hover {
-  background-color: #0056b3;
+  background-color: #c94bff;
 }
 
 #recommendation-display {
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
+}
+
+ul, ol, li {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table, th, td {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

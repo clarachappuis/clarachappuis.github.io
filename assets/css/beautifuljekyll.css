@@ -20,7 +20,7 @@ layout: null
 
   /* common CSS variables */
   --body-font: 'Lora', 'Times New Roman', serif;
-  --header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --header-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   --mid-col: #000000;
 }
 
@@ -56,6 +56,7 @@ body > main {
 p {
   line-height: 1.5;
   margin: 1.875rem 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--header-font);
