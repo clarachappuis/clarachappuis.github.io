@@ -117,6 +117,13 @@ subtitle: You will never have to worry about what movie to watch...
         Each topic is defined as a distribution of words and each movie has a distribution across topics. <br>
         Before performing LDA, we can have a quick look at what words appear often in the different genres:</p>
         <!-- PLOT WORDCLOUD -->
+        <div class="center-content">
+          <iframe
+            src="/assets/plots/wordcloud.html" alt="wordcloud" 
+            style="width: 125%; height: 800px; margin-bottom: -100px; margin-top: -100px; transform: scale(0.75) translate(-15.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
+          </iframe>
+        </div>
+        
       <p style="text-align: justify;"> From the word clouds across different genres, we observe that certain words, such as 'find,' 'tell,' 'one,' and 'see,' appear consistently 
         across all genres. This is expected, as these are commonly used words. However, their large presence makes it difficult to discern clear trends 
         or distinctions among the genres. <br>
@@ -367,8 +374,15 @@ subtitle: You will never have to worry about what movie to watch...
       audience ratings vary across genres, with some receiving more favorable reviews and others showing a mixed reception.
     </p>
 
-</section>
+    <h2> Additional features </h2>
+    <p style="text-align: justify;"> 
+      In this part, we want to determine whether the ratings can be explained by other features. To do so, we will test three 
+      different models for linear regression. The first model will use only numerical features, the second will use only 
+      categorical features, and the third will combine both numerical and categorical features. This approach will allow us to determine which 
+      model performs best and identify which features have the most significant impact on the average ratings.
 
+    </p>
+</section>
 
   
 
