@@ -361,7 +361,7 @@ subtitle: You will never have to worry about what movie to watch...
     <h3> Are topics subcategories of genres?</h3>
     
     <div class="center-content">
-      <img src="/assets/plots/topics-genres2.png" alt="Topics and genres" style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
+      <img src="/assets/plots/topics-genres2.png" alt="Topics and genres" style="width: 85.5%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
     </div>
     
     <p style="text-align: justify;"> From the network analysis, we find that most genres and topics remain unlinked, as they lack sufficient associations. However, among the connected categories, <b> Drama</b> emerges as a dominant genre, appearing across multiple subtopics. This isn’t surprising, given Drama's popularity and its broad thematic reach. Interestingly, some topics act as genre hubs. For instance, <b>Urban Crime</b> and <b> Violence</b> tie together elements of <b> Thriller</b>, <b> Drama</b>, <b> Adventure</b>, and <b> Crime Fiction</b> illustrating how topics can aggregate multiple genres into cohesive narratives.
@@ -372,7 +372,7 @@ subtitle: You will never have to worry about what movie to watch...
     </p>
 
     <div class="center-content">
-      <img src="/assets/plots/spidergraph1.png" alt="Network" style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
+      <img src="/assets/plots/spidergraph1.png" alt="Network" style="width: 80%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
     </div>
     
     <p style="text-align: justify;">
@@ -388,7 +388,7 @@ subtitle: You will never have to worry about what movie to watch...
     <p style="text-align: justify;"> Let's do the same analysis with the labels of the MPST dataset added earlier instead of genres:</p>
 
     <div class="center-content">
-      <img src="/assets/plots/topics-mpstlabels2.png" alt="Topics and labels" style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg);">
+      <img src="/assets/plots/topics-mpstlabels2.png" alt="Topics and labels" style="width: 85.5%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg);">
     </div>
     <p style="text-align: justify;">
       Most genres and topics remain disconnected, with only a few forming meaningful links. Among these, the Murder genre stands out, weaving through multiple subtopics. On the other hand, some topics act as major genres take Historical and Heroic Tales, which brings together subgenres like Historical Fiction, Action, and Murder into a cohesive narrative hub.
@@ -397,7 +397,7 @@ subtitle: You will never have to worry about what movie to watch...
     <h3> How are topics linked together based on tags similarity?
     </h3>
     <div class="center-content">
-      <img src="/assets/plots/spidergraph2.png" alt="Network" style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
+      <img src="/assets/plots/spidergraph2.png" alt="Network" style="width: 80%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
     </div>
     <p style="text-align: justify;"> 
       The links between topics seem to make sense where more similar topics share more links. Smaller topics, like Historical and Heroic Tales, Crime and Pursuit, and Adventure and Loyalty, tend to share the most tag connections. 
@@ -537,7 +537,7 @@ subtitle: You will never have to worry about what movie to watch...
           </tr>
       </tbody>
   </table>
-  
+
   <p style="text-align: justify;"> To do so, we trained a linear regression model containing both numerical and categorical features. For the categorical features, we used TF-IDF vectorization, a technique that transforms textual data into numerical representations, allowing the model to handle complex categorical information. Interestingly, our analysis revealed that categorical features play a much more significant role in predicting ratings compared to numerical ones. <br>
     <em>Categorical features </em>: Movie Genres and Tags play a significant role for ratings prediction. Additionally, Movie Countries and Movie Languages also appear relevant. Incorporating these features into our recommendation system could maybe enhance its effectiveness! <br>
     <em> Numerical features</em>: two standout features are the movie's runtime and the number of votes. Interestingly, box office earnings have minimal impact on ratings - just because a film makes money it doesn’t guarantee it will be well-received by the audience. <br>
