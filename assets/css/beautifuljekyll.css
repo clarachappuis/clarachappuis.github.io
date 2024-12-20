@@ -12,7 +12,7 @@ layout: null
   --hover-col: {{ site.hover-col | default: "#fbfaff" }};
   --navbar-col: {{ site.navbar-col | default: "#fbfaff" }};
   --navbar-text-col: {{ site.navbar-text-col | default: "#fbfaff" }};
-  --navbar-border-col: {{ site.navbar-border-col | default: "#DDDDDD" }};
+  --navbar-border-col: {{ site.navbar-border-col | default: "#fbfaff" }};
   --footer-col: {{ site.footer-col | default: "#EAEAEA" }};
   --footer-text-col: {{ site.footer-text-col | default: "#777777" }};
   --footer-link-col: {{ site.footer-link-col | default: "#404040" }};
@@ -71,7 +71,7 @@ h2 {
   font-style: italic;
 }
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 h4 {
   font-size: 1.125rem;
