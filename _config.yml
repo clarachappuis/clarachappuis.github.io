@@ -50,10 +50,10 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
-social-network-links:
-  email: "someone@example.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  github: daattali
+#social-network-links:
+  #email: "someone@example.com"
+  #rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  #github: daattali
 
 #  medium: yourname
 #  reddit: yourname or r/yoursubreddit
@@ -97,7 +97,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "MyAMAZINGWebsite.com"
 
 # Add the website title to the title of every page
 title-on-all-pages: true

@@ -26,7 +26,7 @@ subtitle: You will never have to worry about what movie to watch...
       <li><a href="#data-exploration">Data Exploration</a></li>
       <li><a href="#lda">Topics Detection</a></li>
       <li><a href="#topics-exploration">Topics Exploration</a></li>
-      <li><a href="#movie-recommendation">Movie recommendations</a></li>
+      <li><a href="#movie-recommendation">Movie Recommendations</a></li>
 
       <li><a href="#conclusion">Conclusion</a></li>
     </ul>
@@ -116,7 +116,7 @@ subtitle: You will never have to worry about what movie to watch...
 
        <p style="text-align: justify;"> 
         Now, let’s have a quick look at what words appear often in the different genres:<br>
-        <span style="font-size: smaller;">(Note: it's possible that the plot is not shown on the website, if you see juste a white empty square try to refresh ❄️ the page...)</span>
+        <span style="font-size: smaller;">(Note: it's possible that the plot is not shown on the website, if you see just a white empty square try to refresh ❄️ the page...)</span>
       </p>
       
         <!-- PLOT WORDCLOUD -->
@@ -137,12 +137,13 @@ subtitle: You will never have to worry about what movie to watch...
 
         <p style="text-align: justify;">But is genre alone enough to truly capture the essence of a movie? Not quite. The richness of a film lies in its story, the plot
           that unfolds and draws us in. By exploring the words used to describe films across genres, we can uncover patterns and themes that go beyond broad categories and discover new topics that might better describe the synopses. </p>
-
+      
+          <!-- 
       <p style="text-align: justify;">In addition to synopses, we also need movie ratings for our analysis. We will explore whether movies with similar themes tend to have
         similar ratings and examine if ratings are essential for our recommendation system. Ratings provide valuable insights in the context 
         of recommendations, as they directly indicate how much viewers enjoyed a movie. To gather this data, we found an IMDb dataset online that includes movie ratings.
         This analysis will be performed later for the continuity of our data story. First things first let’s discover new topics to describe the movies’ plots.
-      </p>
+      </p> -->
       
     </section>
 
@@ -157,7 +158,7 @@ subtitle: You will never have to worry about what movie to watch...
         in our case the movie synopses, and a number of topics. It then groups documents into the given number of topics based on the semantics of the documents. 
         Each topic is defined as a distribution of words and each movie has a distribution across topics. This technique helps identify hidden topics within the movie synopses. </p>
  
-      <h2> How many topics hidden topics are there within synopses? </h2>  
+      <h2> How many hidden topics are there within synopses? </h2>  
 
       <p style="text-align: justify;"> 
         However, as we saw in the word clouds above, to have consistent and more representative topics it’s better to remove stop words, character names or punctuation. Once this is done, we run the LDA algorithm on 
@@ -172,7 +173,7 @@ subtitle: You will never have to worry about what movie to watch...
         </div>
 
       <p style="text-align: justify;">
-        The most coherent number of topics is 15 since it gives the maximum coherence. This gives 15 different word distributions to which we attribute topic names using a Natural Language Processing. 
+        The most coherent number of topics is 15 since it gives the maximum coherence. This gives 15 different word distributions to which we attribute topic names using a Natural Language Processing model. 
         Here are the 15 topics discovered by the LDA model: 
       </p>
 
@@ -292,9 +293,7 @@ subtitle: You will never have to worry about what movie to watch...
     <p style="text-align: justify;"> 
       With our 15 topics identified and labeled, we now turn our focus to understanding these topics in greater depth. The goal is to move beyond simply listing them and instead interpret 
       what each topic represents in the context of the movies it describes. <br>
-      To do this, we use pyLDAvis, a powerful visualization tool for interpreting LDA results. This interactive tool allows us to explore the relationships between topics and their most 
-      relevant terms, offering a deeper understanding of how each topic is constructed. Let’s dive into the topic exploration and discover what these clusters reveal 
-      about the themes and patterns in our dataset.
+      Let's explore the relationships between topics and their most relevant terms.
     </p>
 
       <!-- plot LDA-->  
@@ -365,11 +364,11 @@ subtitle: You will never have to worry about what movie to watch...
       <img src="/assets/plots/topics-genres2.png" alt="Topics and genres" style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
     </div>
     
-    <p style="text-align: justify;"> From the network analysis, we find that most genres and topics remain unlinked, as they lack sufficient associations. However, among the connected categories, <b> Drama</b> emerges as a dominant genre, appearing across multiple subtopics. This isn’t surprising, given Drama's popularity and its broad thematic reach. Interestingly, some topics act as genre hubs. For instance, <b>Urban Crime</b> and <b> Violence</b> ties together elements of <b> Thriller</b>, <b> Drama</b>, <b> Adventure</b>, and <b> Crime Fiction</b> illustrating how topics can aggregate multiple genres into cohesive narratives.
+    <p style="text-align: justify;"> From the network analysis, we find that most genres and topics remain unlinked, as they lack sufficient associations. However, among the connected categories, <b> Drama</b> emerges as a dominant genre, appearing across multiple subtopics. This isn’t surprising, given Drama's popularity and its broad thematic reach. Interestingly, some topics act as genre hubs. For instance, <b>Urban Crime</b> and <b> Violence</b> tie together elements of <b> Thriller</b>, <b> Drama</b>, <b> Adventure</b>, and <b> Crime Fiction</b> illustrating how topics can aggregate multiple genres into cohesive narratives.
     </p>
 
-    <h3> How are topics linked together based on genres similarity</h3>
-    <p style="text-align: justify;"> To understand the similarity between topics, we projected the bipartite graph into a graph where only topics are nodes. In this projection, edges represent the number of genres shared by two topics.
+    <h3> How are topics linked together based on genres similarity?</h3>
+    <p style="text-align: justify;"> To understand the similarity between topics, we project the bipartite graph into a graph where only topics are nodes. In this projection, edges represent the number of genres shared by two topics.
     </p>
 
     <div class="center-content">
@@ -379,7 +378,9 @@ subtitle: You will never have to worry about what movie to watch...
     <p style="text-align: justify;">
       The overall connections between topics seem to make sense where topics that share similarities also appear close together on the graph. For instance, 'Shakespearean Power Struggles' is positioned near ‘Family and Everyday Life’, ‘Emotional Conflict and Drama’, ‘Historical and Heroic Tales’, and ‘Character Interaction and Drama’, which collectively define the essence of ‘Shakespearean power struggles’. The <b>Family and Everyday Life </b> topic emerges as the most prevalent main topic in our dataset, while <b>Action and Strategy </b> and <b> Urban Crime and Violence</b> share the highest number of genres. 
     </p>
-    <p style="text-align: justify;"> To assess if the topics are reflected by genres, we calculate the average probability of a random link between a topic and a genre. By comparing this random probability with the actual proportion of links in our graph, we can evaluate how well our topics are capturing the genres. <br>
+
+    <p style="text-align: justify;"> <em>So do topics reflect genres? </em><br>
+      To assess if the topics are reflected by genres, we calculate the average probability of a random link between a topic and a genre. By comparing this random probability with the actual proportion of links in our graph, we can evaluate how well our topics are capturing the genres. <br>
       The independent probability of such a link is <b> 0.004% </b>, whereas the observed proportion of links in our graph is <b> 1.289%</b>. This significant difference indicates that our topics do reflect genre patterns to some extent!
     </p>
 
@@ -402,7 +403,8 @@ subtitle: You will never have to worry about what movie to watch...
       The links between topics seem to make sense where more similar topics share more links. Smaller topics, like Historical and Heroic Tales, Crime and Pursuit, and Adventure and Loyalty, tend to share the most tag connections. 
     </p>
 
-    <p style="text-align: justify;"> The probability of link in a random relation between topics and labels would be <b>4.29% </b>.
+    <p style="text-align: justify;">  <em>So do topics reflect MPST labels? </em><br>
+      The probability of link in a random relation between topics and labels would be <b>4.29% </b>.
       The proportion of link between topics and labels is also <b> 4.29%</b>.
       The two percentages are identical, meaning that labels can be statistically random for our topics. We thus can not infer any trends between topics and tags from this network.
       </p>
@@ -478,10 +480,9 @@ subtitle: You will never have to worry about what movie to watch...
     </div>
 
 
-    <p style="text-align: justify;"> Here the 15 dimensions of the topics were reduced to 3 using PCA. This allows to visualize the clustering of movies based on their topics, where in fact more similar movies appear close together in this 3d space. <br>
-      Now that movies with similar plots are close to each other, do they share similar ratings?
+    <p style="text-align: justify;"> Here the 15 dimensions of the topics were reduced to 3 using PCA. This allows to visualize the clustering of movies based on their topics, where in fact more similar movies appear close together in this 3d space.
     </p>
-
+    <h3> Do movies with similar plot share similar ratings?</h3>
     <!-- PLOT PCA 2-->
     <div class="center-content">
       <iframe
@@ -496,11 +497,6 @@ subtitle: You will never have to worry about what movie to watch...
     <h2> What features influence ratings the most?</h2>
     <p style="text-align: justify;"> 
       Given our starting point that similar movies receive similar ratings, we need to understand which features are strong predictors of those ratings. This knowledge will help us uncover any features our current analysis might be overlooking. Does adding more features improve our movie rating prediction?
-    </p>
-
-    <p style="text-align: justify;"> To do so, we trained a linear regression model containing both numerical and categorical features. For the categorical features, we used TF-IDF vectorization, a technique that transforms textual data into numerical representations, allowing the model to handle complex categorical information. Interestingly, our analysis revealed that categorical features play a much more significant role in predicting ratings compared to numerical ones. <br>
-      <em>Categorical features </em>: Movie Genres and Tags play a significant role for ratings prediction. Additionally, Movie Countries and Movie Languages also appear relevant. Incorporating these features into our recommendation system could maybe enhance its effectiveness! <br>
-      <em> Numerical features</em>: two standout features are the movie's runtime and the number of votes. Interestingly, box office earnings have minimal impact on ratings - just because a film makes money it doesn’t guarantee it will be well-received by the audience. <br>
     </p>
 
     <p style="text-align: justify;"> The findings are summarized in the table below:</p>
@@ -541,7 +537,12 @@ subtitle: You will never have to worry about what movie to watch...
           </tr>
       </tbody>
   </table>
-   
+  
+  <p style="text-align: justify;"> To do so, we trained a linear regression model containing both numerical and categorical features. For the categorical features, we used TF-IDF vectorization, a technique that transforms textual data into numerical representations, allowing the model to handle complex categorical information. Interestingly, our analysis revealed that categorical features play a much more significant role in predicting ratings compared to numerical ones. <br>
+    <em>Categorical features </em>: Movie Genres and Tags play a significant role for ratings prediction. Additionally, Movie Countries and Movie Languages also appear relevant. Incorporating these features into our recommendation system could maybe enhance its effectiveness! <br>
+    <em> Numerical features</em>: two standout features are the movie's runtime and the number of votes. Interestingly, box office earnings have minimal impact on ratings - just because a film makes money it doesn’t guarantee it will be well-received by the audience. <br>
+  </p>
+
 
 </section>
 
