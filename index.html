@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Watch out for unexpected movies recommendation!
+title: Watch out for unexpected movie recommendations!
 subtitle: You will never have to worry about what movie to watch...
 ---
 
@@ -62,11 +62,13 @@ subtitle: You will never have to worry about what movie to watch...
       <p style="text-align: justify;"> For our task, we use three different datasets:</p>
 
       <ul style="text-align: left; margin-left: 20px;">
-        <li>CMU Movie Summary Corpus: contains Wikipedia ID, Title and Genre of movies. </li>
+        <li>CMU Movie Summary Corpus: Our original dataset contains 42’306 movie plot summaries that have been extracted from Wikipedia, as well as metadata data extracted from freebase which includes revenue, title, genre, release date, runtime and language.  </li>
         Download the <a href="https://www.cs.cmu.edu/~ark/personas/" download>dataset here</a> 
-        <li>MPST: Dataset containing Movie Plot Synopses with Tags (labels). Used to retrieve movies' synopsis. </li>
+        <li>MPST: A dataset of movie plot synopses with story-related tags (aka labels) contains 14’828 movies from which only 94 did not have a match with our original dataset.
+          From the MPST dataset, we retrieved the synopsis of the movies as well as their tags.
+          </li>
           Download the <a href="https://www.kaggle.com/datasets/cryptexcode/mpst-movie-plot-synopses-with-tags?resource=download" download>dataset here</a>
-        <li>IMDb ratings: Contains the ratings of many movies.</li>
+        <li>IMDb ratings: A dataset containing the weighted average of all the individual user ratings of a movie and the number of votes for it. </li>
           Download the <a href="https://developer.imdb.com/non-commercial-datasets/" download>dataset here</a> 
       </ul>
 
@@ -95,39 +97,65 @@ subtitle: You will never have to worry about what movie to watch...
       
       <p style="text-align: justify;">Drama takes the lead as the most popular genre by far (what can we say, people love a bit of drama!). Action, Romance, 
         Crime and Horror also shine, showing that people enjoy laughter, love, excitement and also scaring themselves. On the other hand, niche genres like 
-        "Costume Drama" and "Western" are less common, loved by smaller, more specific audiences.</p>
-      
-      <p style="text-align: justify;">But is genre alone enough to truly capture the essence of a movie? Not quite. The richness of a film lies in its story, the plot
-        that unfolds and draws us in. To understand what makes these genres shine, let’s dive into the synopses that bring these movies to life. 
-        By exploring the words used to describe films across genres, we can uncover patterns and themes that go beyond broad categories.<br>
-        To visualize this, we’ve created word clouds for each genre, highlighting the most frequently used words in movie synopses. These clouds give us a glimpse 
-        of the recurring themes and ideas that define each genre. Let’s take a closer look! </p>
+        "Costume Drama" and "Western" are less common, loved by smaller, more specific audiences. It's important to note that a single movie can belong to multiple genres, 
+        which helps explain why Drama dominates. In fact, it often serves as a foundational element in many plots, adding emotional depth and sentimentality to keep audiences 
+        engaged. For instance, a Western movie might incorporate elements of action or crime, such as a murder mystery set in the desert.
+      </p>
+
+      <h2> Do words define genres? </h2>
+      <!-- 
+       -->
+
+        <p style="text-align: justify;"> 
+          Now, let’s have a quick look at what words appear often in the different genres:</p>
+        <!-- PLOT WORDCLOUD -->
+        <div class="center-content">
+          <iframe
+            src="/assets/plots/top_genres_wordcloud.html" alt="top_genres_wordcloud" 
+            style="width: 125%; height: 800px; margin-bottom: -100px; margin-top: -100px; transform: scale(0.75) translate(-15.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
+          </iframe>
+        </div>
+
+        <p style="text-align: justify;"> From the word clouds across different genres, we observe that certain words, such as 'find,' 'tell,' 'one,' and 'see,' appear consistently 
+          across all genres. This is expected, as these are commonly used words. However, their large presence makes it difficult to discern clear trends 
+          or distinctions among the genres. <br>
+          
+          For specific genres such as Crime Thriller we can already guess the genres that it corresponds to by looking at the word 
+          cloud only, with words such as 'kill', 'police', 'gun' or 'dead'.
+        </p>
+
+        <p style="text-align: justify;">But is genre alone enough to truly capture the essence of a movie? Not quite. The richness of a film lies in its story, the plot
+          that unfolds and draws us in. By exploring the words used to describe films across genres, we can uncover patterns and themes that go beyond broad categories and discover new topics that might better describe the synopses. </p>
 
       <p style="text-align: justify;">In addition to synopses, we also need movie ratings for our analysis. We will explore whether movies with similar themes tend to have
         similar ratings and examine if ratings are essential for our recommendation system. Ratings provide valuable insights in the context 
-        of recommendations, as they directly indicate how much viewers enjoyed a movie. To gather this data, we found an IMDb dataset online that includes movie ratings.</p>
+        of recommendations, as they directly indicate how much viewers enjoyed a movie. To gather this data, we found an IMDb dataset online that includes movie ratings.
+        This analysis will be performed later for the continuity of our data story. First things first let’s discover new topics to describe the movies’ plots.
+      </p>
       
     </section>
 
     <!-- LDA Section -->
     <section id="lda">
       <h1>Topics Detection</h1>
-      <p style="text-align: justify;">Latent Dirichlet Allocation (LDA) is an unsupervised machine learning method. It takes as inputs a corpus of documents, 
+      <p style="text-align: justify;">
+        But how do we move from broad genres to the deeper, more intricate storytelling elements that truly define a movie? This is where topic modeling comes 
+        into play. By analyzing the synopses that describe the essence of each film, we can uncover recurring themes and patterns that go beyond surface-level 
+        genres. To achieve this, we use Latent Dirichlet Allocation (LDA), an unsupervised machine learning method that takes as inputs a corpus of documents, 
         in our case the movie synopses, and a number of topics. It then groups documents into the given number of topics based on the semantics of the documents. 
-        Each topic is defined as a distribution of words and each movie has a distribution across topics. <br>
+        Each topic is defined as a distribution of words and each movie has a distribution across topics. This technique helps identify hidden topics within the movie synopses. <br>
         Before performing LDA, we can have a quick look at what words appear often in the different genres:</p>
-        <!-- PLOT WORDCLOUD -->
+        <!-- PLOT WORDCLOUD 
         <div class="center-content">
           <iframe
             src="/assets/plots/wordcloud.html" alt="wordcloud" 
             style="width: 125%; height: 800px; margin-bottom: -100px; margin-top: -100px; transform: scale(0.75) translate(-15.5%, 0); filter: invert(1) hue-rotate(180deg); background-color: black;">
           </iframe>
         </div>
+        -->
         
-      <p style="text-align: justify;"> From the word clouds across different genres, we observe that certain words, such as 'find,' 'tell,' 'one,' and 'see,' appear consistently 
-        across all genres. This is expected, as these are commonly used words. However, their large presence makes it difficult to discern clear trends 
-        or distinctions among the genres. <br>
-        Indeed, to have consistent and more representative topics it’s better to remove stop words, character names or punctuation. Once this is done, we run the LDA algorithm on 
+      <p style="text-align: justify;"> 
+        However, as we saw in the wordcloud above, to have consistent and more representative topics it’s better to remove stop words, character names or punctuation. Once this is done, we run the LDA algorithm on 
         synopses for a various number of topics. The goal is to find which number of topics fits our data best. For each LDA model, we use a coherence 
         score to measure how consistent the topics are. <br>
         Here is the graph of coherence as a function of the number of topics:</p>
@@ -137,111 +165,132 @@ subtitle: You will never have to worry about what movie to watch...
             style="width: 70%; height: auto; margin-bottom: 20px; filter: invert(1) hue-rotate(180deg); background-color: black;">
           </iframe>
         </div>
+
       <p style="text-align: justify;">
-        We pick the number of topics to be 15 since it gives the maximum coherence! This gives 15 different word distributions to which we attribute topic 
-        names using a Natural Language Model. Here are the 15 topics discovered by the LDA model: 
+        The most coherent number of topics is 15 since it gives the maximum coherence. This gives 15 different word distributions to which we attribute topic names using a Natural Language Processing. 
+        Here are the 15 topics discovered by the LDA model: 
       </p>
 
       <table style="border-collapse: collapse; width: 100%; background-color: transparent; color: white;">
         <thead>
             <tr style="background-color: transparent;">
                 <th style="border: 1px solid white; padding: 5px;">Topic</th>
-                <th style="border: 1px solid white; padding: 5px;">Topic</th>
-                <th style="border: 1px solid white; padding: 5px;">Movie example</th>
+                <th style="border: 1px solid white; padding: 5px;">Keywords</th>
+                <th style="border: 1px solid white; padding: 5px;">Theme</th>
+                <th style="border: 1px solid white; padding: 5px;">Movie Example</th>
             </tr>
         </thead>
         <tbody>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">1</td>
+                <td style="border: 1px solid white; padding: 5px;">police, car, murder</td>
                 <td style="border: 1px solid white; padding: 5px;">Crime and Pursuit</td>
                 <td style="border: 1px solid white; padding: 5px;">Flightplan</td>
             </tr>
-            <tr style="background-color: transparent;" >
+            <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">2</td>
+                <td style="border: 1px solid white; padding: 5px;">murder, woman, case</td>
                 <td style="border: 1px solid white; padding: 5px;">Investigative Drama</td>
                 <td style="border: 1px solid white; padding: 5px;">Great Expectations</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">3</td>
+                <td style="border: 1px solid white; padding: 5px;">say, ask, room</td>
                 <td style="border: 1px solid white; padding: 5px;">Domestic Suspense</td>
                 <td style="border: 1px solid white; padding: 5px;">Miracle</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">4</td>
+                <td style="border: 1px solid white; padding: 5px;">Beast, barricade, escape</td>
                 <td style="border: 1px solid white; padding: 5px;">Struggle and Sacrifice</td>
                 <td style="border: 1px solid white; padding: 5px;">Avenging Angel</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">5</td>
+                <td style="border: 1px solid white; padding: 5px;">game, team, treasure</td>
                 <td style="border: 1px solid white; padding: 5px;">Adventure and Teamwork</td>
                 <td style="border: 1px solid white; padding: 5px;">A Single Man</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">6</td>
+                <td style="border: 1px solid white; padding: 5px;">Macbeth, king, prophecy</td>
                 <td style="border: 1px solid white; padding: 5px;">Shakespearean Power Struggles</td>
                 <td style="border: 1px solid white; padding: 5px;">The Prisoner of Zenda</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">7</td>
+                <td style="border: 1px solid white; padding: 5px;">car, police, money</td>
                 <td style="border: 1px solid white; padding: 5px;">Urban Crime and Violence</td>
                 <td style="border: 1px solid white; padding: 5px;">Confessions of a Shopaholic</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">8</td>
+                <td style="border: 1px solid white; padding: 5px;">Sir, musketeer, airship</td>
                 <td style="border: 1px solid white; padding: 5px;">Historical and Heroic Tales</td>
                 <td style="border: 1px solid white; padding: 5px;">The Shop Around the Corner</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">9</td>
+                <td style="border: 1px solid white; padding: 5px;">Lincoln, look, life</td>
                 <td style="border: 1px solid white; padding: 5px;">Identity and Discovery</td>
                 <td style="border: 1px solid white; padding: 5px;">Kidnapped</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">10</td>
-                <td style="border: 1px solid white; padding: 5x;">Emotional Conflict and Drama</td>
-                <td style="border: 1px solid white; padding: 5;">Frozen</td>
+                <td style="border: 1px solid white; padding: 5px;">say, money, love</td>
+                <td style="border: 1px solid white; padding: 5px;">Emotional Conflict and Drama</td>
+                <td style="border: 1px solid white; padding: 5px;">Frozen</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">11</td>
+                <td style="border: 1px solid white; padding: 5px;">house, vampire, family</td>
                 <td style="border: 1px solid white; padding: 5px;">Supernatural and Gothic</td>
                 <td style="border: 1px solid white; padding: 5px;">The Frozen Ground</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">12</td>
+                <td style="border: 1px solid white; padding: 5px;">love, family, school</td>
                 <td style="border: 1px solid white; padding: 5px;">Family and Everyday Life</td>
                 <td style="border: 1px solid white; padding: 5px;">The Forbidden Kingdom</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">13</td>
+                <td style="border: 1px solid white; padding: 5px;">guard, musketeer, sword</td>
                 <td style="border: 1px solid white; padding: 5px;">Adventure and Loyalty</td>
                 <td style="border: 1px solid white; padding: 5px;">Oliver Twist</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">14</td>
+                <td style="border: 1px solid white; padding: 5px;">say, look, castle</td>
                 <td style="border: 1px solid white; padding: 5px;">Drama and Character Interaction</td>
                 <td style="border: 1px solid white; padding: 5px;">Dungeons & Dragons: The Book of Vile Darkness</td>
             </tr>
             <tr style="background-color: transparent;">
                 <td style="border: 1px solid white; padding: 5px;">15</td>
+                <td style="border: 1px solid white; padding: 5px;">escape, attack, team</td>
                 <td style="border: 1px solid white; padding: 5px;">Action and Strategy</td>
                 <td style="border: 1px solid white; padding: 5px;">Scarface</td>
             </tr>
         </tbody>
     </table>
+
+    <p style="text-align: justify;"> 
+      Woah interesting topics! Some resemble genres: <i>Crime and Pursuit</i> was expected and sound similar to <i>Crime and Thriller</i>, but some are quite surprising. 
+      <i>Identity and Discovery</i> is a never-seen-before genre! Those topics feel like they reflect more the entire movie plot rather than overall ambiance, such as 
+      the distinction between themes like <i> Adventure</i> and <i> Teamwork</i> versus <i> Adventure and Loyalty</i> brings insights into the core of the story.
+    </p>
+    
   </section>
 
   <section id="topics_exploration">
     <h1> Topics Exploration </h1> 
     <p style="text-align: justify;"> 
-      Here we try to interpret our topics using pyLDAvis which is a common way of interpreting LDA results:
+      With our 15 topics identified and labeled, we now turn our focus to understanding these topics in greater depth. The goal is to move beyond simply listing them and instead interpret 
+      what each topic represents in the context of the movies it describes. <br>
+      To do this, we use pyLDAvis, a powerful visualization tool for interpreting LDA results. This interactive tool allows us to explore the relationships between topics and their most 
+      relevant terms, offering a deeper understanding of how each topic is constructed. Let’s dive into the topic exploration and discover what these clusters reveal 
+      about the themes and patterns in our dataset.
     </p>
-
-    <p style="text-align: justify;"> <em> How to interact with the graph: </em></p>
-    <ul style="text-align: left; margin-left: 20px; margin-top: 5px;">
-      <li> Selecting a topic (click on a circle, or select from the top bar): updates the right panel to show the most relevant terms for that specific topic. </li>
-      <li> Hovering over a term (Right Panel): highlights its contribution to the topic (red bar) and its overall frequency (grey bar). </li>
-  </ul>
-
 
       <!-- plot LDA-->  
       <div class="center-content" style="margin-bottom: -40px; margin-top: -20px">
@@ -252,9 +301,14 @@ subtitle: You will never have to worry about what movie to watch...
         </iframe>
       </div>
       
-    
-      <p style="text-align: justify;">
-        This plot have many information and it is normal to be confused, don't worry! Let's break it down together. </p>
+      <p style="text-align: justify;"> <em> Side note: How to interact with the graph </em></p>
+      <ul style="text-align: left; margin-left: 20px; margin-top: 5px;">
+        <li> Selecting a topic (click on a circle, or select from the top bar): updates the right panel to show the most relevant terms for that specific topic. </li>
+        <li> Hovering over a term (Right Panel): highlights its contribution to the topic (red bar) and its overall frequency (grey bar). </li>
+      </ul>
+
+      <p style="text-align: justify;"> Now that you are a master at interacting with our plot, let’s analyze it. This plot has many information and it is normal to be confused, don't worry! Let's break it down together.</p>
+
       <p style="text-align: justify;">
         <em> LEFT PANEL - Intertopic Distance Map: </em> <br>
         Each movie synopsis in the corpus can be represented as a probability distribution over all topics. This creates 
@@ -289,11 +343,37 @@ subtitle: You will never have to worry about what movie to watch...
         hovering over the words of a certain topic we can see how much each topic uses this word. Words like "army" appear in most topics. 
         But in order to differentiate each other, the topics also have words specific to them that can be seen when setting the relevance to 0 (λ=0). 
         We can then see that for Topic 7, "MacBeth" is an important word specific to this topic. <br>
-        While only topics 11, 10 and 7 are isolated from the rest all other topics are still very different from each other but this is not evident 
+        While only topics 11 (Adventure and Loyalty), 10 (Identity and Discovery) and 7 (Family and Everyday Life) are isolated from the rest, all other topics are still very different from each other but this is not evident 
         since the 15 dimensions of the topics are projected to only 2 dimensions.
       </p>
 
   <h2> Are topics linked to genres or labels? </h2>
+  <p style="text-align: justify;"> While the graph analysis done previously highlights how topics are constructed and differentiated based on their keywords, it raises an important question: Do topics capture information or are 
+    they just another way to encode genres or labels? <br>
+    To investigate this, we explore the relationships between topics and features such as genres and MPST labels. By creating bipartite networks, we visualize how topics connect to genres (left) and MPST labels (right). These networks help us 
+    uncover overlaps and shared patterns, providing insights into how well the discovered topics correspond to existing categorizations</p>
+
+    <head>
+      <style>
+        .image-container {
+          display: flex;
+          justify-content: center; /* Center the images horizontally */
+          gap: 20px; /* Adds space between the images */
+        }
+        .image-container img {
+          width: 60%;/* Adjust the size of the images */
+          filter: invert(1); 
+        }
+      </style>
+    </head>
+    <body>
+      <div class="image-container">
+        <img src="assets/plots/topics-genres.png" alt="Image 1">
+        <img src="assets/plots/topics-mpstlabels.png" alt="Image 2">
+      </div>
+    </body>
+
+    <!--
   <p style="text-align: justify;"> 
     Let’s see if our topics share some similarity with other characteristics such as the genres or the labels of the movies. Here is a network of the topics, 
     and the links between them represent the number of genres (on the left) or labels (on the right) they have in common. The size of the nodes is proportional 
@@ -306,6 +386,7 @@ subtitle: You will never have to worry about what movie to watch...
     whether the proportion of links in the graph is 1.289%. This difference means that our topics reflect to some extent the genres of the movies. However for the 
     labels, the independent probability is equal to the proportion of links. This shows that our topics are completely independent of the labels.
   </p>
+  -->
   </section>
 
 <!--
